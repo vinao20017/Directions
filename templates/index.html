@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Calculadora de Distância</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px auto;
+            max-width: 600px;
+            text-align: center;
+        }
+        input, button {
+            padding: 10px;
+            margin: 5px;
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+    <h1>Distância entre Cidades</h1>
+    <form method="post">
+        <input type="text" name="origem" placeholder="Cidade de origem" required><br>
+        <input type="text" name="destino" placeholder="Cidade de destino" required><br>
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if resultado %}
+        {% if resultado.erro %}
+            <p style="color:red">{{ resultado.erro }}</p>
+        {% else %}
+            <h3>Resultado:</h3>
+            <p><strong>Origem:</strong> {{ resultado.origem }}</p>
+            <p><strong>Destino:</strong> {{ resultado.destino }}</p>
+            <p><strong>Distância:</strong> {{ resultado.distancia }}</p>
+            <p><strong>Duração estimada:</strong> {{ resultado.duracao }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
