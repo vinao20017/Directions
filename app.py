@@ -1,10 +1,12 @@
 from flask import Flask, render_template, request
 import openrouteservice
+import os
 
 app = Flask(__name__)
 
 # Substitua pela sua chave da OpenRouteService
-API_KEY = "5b3ce3597851110001cf62480221203250a14f1aba591f98da54de79"
+API_KEY = os.environ.get("ORS_API_KEY")
+# API_KEY = "5b3ce3597851110001cf62480221203250a14f1aba591f98da54de79"
 cliente = openrouteservice.Client(key=API_KEY)
 
 @app.route("/", methods=["GET", "POST"])
